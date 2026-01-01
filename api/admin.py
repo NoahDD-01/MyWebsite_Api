@@ -39,5 +39,8 @@ class ProfileAdmin(admin.ModelAdmin):
 
 @admin.register(ContactUs)
 class ContactUsAdmin(admin.ModelAdmin):
-    list_display = ['name','phone_number','message']
-    list_filter = ['created_at']
+    list_display = ['name', 'phone_number', 'message', 'created_at']
+    # နောက်ဆုံးမှာ comma (,) ပါတာ သေချာပါစေ (Tuple ဖြစ်သွားအောင်လို့ပါ)
+    ordering = ('-created_at',)
+    search_fields = ('name', 'phone_number',)
+    list_filter = ('created_at',)
