@@ -9,17 +9,19 @@ class ServiceTextAdmin(admin.ModelAdmin):
     list_display = ['service_text_en','service_text_mm','created_at']
     list_filter = ['created_at']
 
+
 @admin.register(ServiceBox)
 class ServiceBoxAdmin(admin.ModelAdmin):
-    list_display = ['title_en','title_mm','image_tag','created_at']
+    list_display = ['title_en', 'title_mm', 'image_tag', 'created_at']
     list_filter = ['created_at']
 
-    # image preview
     def image_tag(self, obj):
-        if obj.image:
-            return format_html('<img src="{}" width="100" />'.format(obj.image.url))
+        if obj.icon:
+            # .format() ကို ဖြုတ်ပြီး အခုလို ရေးရပါမယ်
+            return format_html('<img src="{}" width="100" height="auto" style="border-radius: 8px;" />', obj.icon.url)
         return "-"
-    image_tag.short_description = 'ServiceImage'
+    
+    image_tag.short_description = 'Service Icon'
 
 @admin.register(ProjectBox)
 class ProjectBoxAdmin(admin.ModelAdmin):
