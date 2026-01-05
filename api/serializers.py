@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import ServiceText,ServiceBox,ProjectBox,Profile,ContactUs
+from .models import ServiceText,ServiceBox,ProjectBox,Profile,ContactUs,AboutUs,OurMission,ChooseUs
 
 class ServiceTextSerializer(serializers.ModelSerializer):
     class Meta:
@@ -26,4 +26,17 @@ class ContactUsSerializer(serializers.ModelSerializer):
         model = ContactUs
         fields = '__all__'
 
+class AboutUsSerializer(serializers.ModelSerializer):
+    class Meta :
+        model = AboutUs
+        fields = '__all__'
 
+class OurMissionSerializer(serializers.ModelSerializer):
+    class Meta :
+        model = OurMission
+        fields = '__all__'
+
+class ChooseUsSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ChooseUs
+        fields = '__all__'

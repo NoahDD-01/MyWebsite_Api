@@ -29,27 +29,32 @@ class ServiceBox(models.Model):
         return str(self.title_en)
     
 class ProjectBox(models.Model):
-    id = models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False)
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     project_num = models.IntegerField()
-    project_title = models.CharField(max_length=50)
-    project_des = models.TextField()
+    project_title_en = models.CharField(max_length=100,null=True,blank=True)
+    project_title_mm = models.CharField(max_length=100,null=True,blank=True)
+    project_des_en = models.TextField(null=True,blank=True)
+    project_des_mm = models.TextField(null=True,blank=True)
     project_link = models.URLField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return str(self.project_title)
+        return self.project_title_en
     
 class Profile(models.Model):
-    id = models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False)
-    profile_title = models.CharField(max_length=255)
-    profile_des  = models.TextField()
-    image = models.ImageField(upload_to="profile/")
+    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
+    # Language နှစ်မျိုးအတွက် ခွဲလိုက်ပါ
+    profile_title_en = models.CharField(max_length=255,null=True,blank=True)
+    profile_title_mm = models.CharField(max_length=255,null=True,blank=True)
+    profile_des_en = models.TextField(null=True,blank=True)
+    profile_des_mm = models.TextField(null=True,blank=True)
+    image = models.ImageField(upload_to="profile/",null=True,blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
     def __str__(self):
-        return str(self.profile_title)
+        return self.profile_title_en
     
 class ContactUs(models.Model):
     id = models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False)
@@ -62,6 +67,36 @@ class ContactUs(models.Model):
 
     def __str__(self):
         return str(self.name)
+class AboutUs(models.Model):
+    id = models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False)
+    des_en = models.TextField()
+    des_mm = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.des_en)
+
+class OurMission(models.Model):
+    id = models.UUIDField(primary_key=True,default=uuid.uuid4,editable=False)
+    des_en = models.TextField()
+    des_mm = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.des_en)
+class ChooseUs(models.Model):
+    id = models.UUIDField(primary_key=True,editable=False,default=uuid.uuid4)
+    title_en = models.CharField(max_length=255)
+    title_mm = models.CharField(max_length=255)
+    des_en = models.TextField()
+    des_mm = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return str(self.title_en)
 
 
 

@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import (
-    servicetextview,serviceboxview,projectboxview,profileview,contactusview
+    servicetextview,serviceboxview,projectboxview,profileview,contactusview,aboutusview,ourmissionview,chooseusview
 )
 
 urlpatterns = [
@@ -39,6 +39,30 @@ urlpatterns = [
     path('contactus/<uuid:pk>/',contactusview.contactus_detail,name='contactus_detail'),
     path('contactus/<uuid:pk>/update/',contactusview.contactus_update,name='contactus_update'),
     path('contactus/<uuid:pk>/delete/',contactusview.contactus_delete,name='contactus_delete'),
+
+    # AboutUs URLs 
+    path('aboutus/',aboutusview.aboutus_list,name='aboutus_list'),
+    path('aboutus/create/',aboutusview.aboutus_create,name='aboutus_create'),
+    path('aboutus/<uuid:pk>/',aboutusview.aboutus_detail,name='aboutus_detail'),
+    path('aboutus/<uuid:pk>/update/',aboutusview.aboutus_update,name='aboutus_update'),
+    path('aboutus/<uuid:pk>/delete/',aboutusview.aboutus_delete,name='aboutus_delete'),
+
+    # OurMission URLs 
+    path('mission/',ourmissionview.mission_list,name='mission_list'),
+    path('mission/create/',ourmissionview.mission_create,name='mission_create'),
+    path('mission/<uuid:pk>/',ourmissionview.mission_detail,name='mission_detail'),
+    path('mission/<uuid:pk>/update/',ourmissionview.mission_update,name='mission_update'),
+    path('mission/<uuid:pk>/delete/',ourmissionview.mission_delete,name='mission_delete'),
+
+    # ChooseUs URLs 
+    path('chooseus/',chooseusview.chooseus_list,name='chooseus_list'),
+    path('chooseus/create/',chooseusview.chooseus_create,name='chooseus_create'),
+    path('chooseus/<uuid:pk>/',chooseusview.chooseus_detail,name='chooseus_detail'),
+    path('chooseus/<uuid:pk>/update/',chooseusview.chooseus_update,name='chooseus_update'),
+    path('chooseus/<uuid:pk>/delete/',chooseusview.chooseus_delete,name='chooseus_delete'),
+
+    
+
 
 
   
